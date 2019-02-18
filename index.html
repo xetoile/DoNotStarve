@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="utf-8" http-equiv="encoding"/>
+  <title>Season and Moon Calendar: Don't Starve / Together / Reign of Giants</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <link rel="stylesheet" type="text/css" href="./main.css"/>
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous"
+  />
+</head>
+<body>
+  <div id="vueApp">
+    <div class="inputs">
+      <div class="modifiers">
+        <div class="label">
+          Game modifiers
+        </div>
+        <div class="content">
+          <div class="i-checkbox">
+            <input type="checkbox" name="isRoG" v-model="calendar.isRoG"/>
+            <label for="isRoG">RoG</label>
+          </div>
+          <div class="i-checkbox">
+            <input type="checkbox" name="isDST" v-model="calendar.isDST"/>
+            <label for="isDST">DST</label>
+          </div>
+        </div>
+      </div>
+      <div class="season">
+        <div class="label">
+          Starting season
+        </div>
+        <div class="content">
+          <div class="i-radio" v-for="season in calendar.seasons">
+            <input
+              type="radio"
+              :name="season"
+              :value="season"
+              v-model="calendar.startingSeason"
+            />
+            <label :for="season">{{ season }}</label>
+          </div>
+        </div>
+      </div>
+      <div class="pace">
+        <div class="label">
+          Seasons pace
+        </div>
+        <div class="content">
+          <div class="i-radio" v-for="pace in calendar.paces">
+            <input
+              type="radio"
+              :name="pace.replace(/ /g, '-')"
+              :value="pace"
+              v-model="calendar.pace"
+              :disabled="pace !== 'default'"
+            />
+            <label :for="pace.replace(/ /g, '-')">{{ pace }}</label>
+          </div>
+        </div>
+      </div>
+      <div class="day">
+        <div class="label">
+          Current day
+        </div>
+        <div class="content">
+          <div class="i-number">
+            <input type="number" name="today" v-model="calendar.today"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <div class="moon-phase">
+      <div class="phase-pictures">
+        <div
+          v-for="phase in calendar.phases"
+          :class="{'phase-picture': true, 'greyed-out': calendar.phase.label !== phase}"
+        >
+          <img
+            :id="'phase-' + phase.replace(/ /g, '-')"
+            src="./assets/transparent-square-140px.png"
+          />
+          <div>{{ phase }}</div>
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <div class="seasons">
+      <div class="season-current">
+        Current
+        <br/>
+        <span :class="currentSeasonFA" :title="calendar.season.current.label"></span>
+        <br />
+        <div>
+          <div class="fas fa-map-marker-alt" title="started on"></div>
+          <div>day {{ calendar.season.current.begins.absolute }}</div>
+        </div>
+        <div>
+          <div class="fas fa-step-backward" title="started for"></div>
+          <div>{{ calendar.season.current.begins.relative }} {{ calendar.season.current.begins.relative > 1 ? 'days' : 'day' }}</div>
+        </div>
+        <div>
+          <div class="far fa-clock" title="duration"></div>
+          <div>{{ calendar.season.current.duration }} days</div>
+        </div>
+      </div>
+      <div class="season-next">
+        Next
+        <br/>
+        <span :class="nextSeasonFA" :title="calendar.season.next.label"></span>
+        <br />
+        <div>
+          <div>day {{ calendar.season.next.begins.absolute }}</div>
+          <div class="fas fa-map-marker-alt" title="starts on"></div>
+        </div>
+        <div>
+          <div>{{ calendar.season.next.begins.relative }} {{ calendar.season.next.begins.relative > 1 ? 'days' : 'day' }}</div>
+          <div class="fas fa-step-forward" title="starts in"></div>
+        </div>
+        <div>
+          <div>{{ calendar.season.next.duration }} days</div>
+          <div class="far fa-clock" title="duration"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="credits">
+    Maxwell didn't provide any warranty to Wilson, neither do I to you: this tool is provided as is. Best used with <a href="https://rezecib.github.io/foodguide/html/index.htm" target="_blank">rezecib's crock pot simulator</a>. Season paces not implemented due to the lack of coherent information on the <a href="https://dontstarve.fandom.com" target="_blank">Wiki</a>.
+    <br/>
+    Third-party material: <span id="credit-links"></span>
+  </div>
+  <script src="./DoNotStarveCalendar.js"></script>
+  <script src="./vueCalendar.js"></script>
+  <script type="text/javascript">
+    let credits = {
+      'Belisa Plumilla Manual font @ DaFont': 'https://www.dafont.com',
+      'the Moon by Dale Humphries @ ClipartMax': 'https://www.clipartmax.com',
+      'icons @ Font Awesome': 'https://www.fontawesome.com',
+      'powered by Vue.js': 'https://vuejs.org',
+      'retrieved from jsDelivr': 'https://www.jsdelivr.com',
+      'hosted by GitHub': 'https://github.com'
+    };
+    document.querySelector('span#credit-links').innerHTML = Object.keys(credits).map((credit) => {
+      return `<a href="${credits[credit]}" target="_blank">${credit}</a>`;
+    }).join(' - ');
+  </script>
+</body>
+</html>

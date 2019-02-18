@@ -1,0 +1,147 @@
+@font-face {
+  font-family: "Belisa Plumilla Manual";
+  src: url("./assets/belisa_plumilla.woff") format("woff");
+}
+
+body {
+  background-color: #a0a0a0;
+  font-family: "Belisa Plumilla Manual";
+  font-size: xx-large;
+}
+
+#vueApp {
+  margin: .5em 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#vueApp > div {
+  flex: 1 0 auto;
+}
+
+div.inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+div.inputs > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: .2em 0;
+}
+
+div.label {
+  flex: 0 0 10em;
+}
+
+div.content {
+  display: flex;
+  flex-direction: row;
+  flex: 1 0 auto;
+}
+
+div.content > div {
+  display: flex;
+  flex-direction: column;
+}
+
+div.content input:not([type="number"]) {
+  order: 1;
+  margin: auto 3em;
+}
+
+div.content input[type="number"] {
+  margin: auto 1em;
+  font-family: "Belisa Plumilla Manual";
+  font-size: xx-large;
+}
+
+div.content label {
+  order: 2;
+  text-align: center;
+}
+
+div.phase-pictures {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+div.phase-picture img {
+  width: 140px;
+  height: 140px;
+  background: url('./assets/moon.png') no-repeat;
+}
+
+div.phase-picture.greyed-out {
+  opacity: .1;
+}
+
+div.phase-picture > div {
+  text-transform: capitalize;
+  text-align: center;
+}
+
+img#phase-new-moon {
+  background-position: left -491px top -246px;
+}
+
+img#phase-waxing-quarter {
+  background-position: left -423px top -424px;
+}
+
+img#phase-first-quarter {
+  background-position: left -246px top -492px;
+}
+
+img#phase-waxing-gibbous {
+  background-position: left -69px top -423px;
+}
+
+img#phase-full-moon {
+  background-position: left 0px top -246px;
+}
+
+img#phase-waning-gibbous {
+  background-position: left -69px bottom -423px;
+}
+
+img#phase-last-quarter {
+  background-position: left -246px bottom -492px;
+}
+
+img#phase-waning-quarter {
+  background-position: left -423px bottom -424px;
+}
+
+div.seasons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+div.seasons > div {
+  margin: .1em 5em;
+  text-align: center;
+}
+
+div.seasons > div > div {
+  margin: .5em 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+div.seasons > div > div > div {
+  margin: 0 1em;
+}
+
+div.credits {
+  font-family: "Arial";
+  font-size: x-small;
+  text-align: center;
+  margin: -.5em 0;
+}

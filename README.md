@@ -5,5 +5,7 @@ An unofficial season and moon calendar for Klei Entertainment's Don't Starve.
 - Reign of Giants 4-season year
 - Don't Starve Together specific moon cycle
 ### Doesn't implement
-- modified seasons pace: very short, short, long, very long (no verified numbers on the Wiki)
+- modified seasons pace: very short, short, long, very long (no verified numbers on the [Wiki](https://dontstarve.fandom.com))
 - Shipwrecked and Hamlet seasons (same reason)
+
+Running on GitHub Pages [here](https://xetoile.github.io/DoNotStarve/).

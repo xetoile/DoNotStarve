@@ -69,6 +69,10 @@ div.phase-pictures {
   justify-content: center;
 }
 
+div.phase-description {
+  text-align: center;
+}
+
 div.phase-picture img {
   width: 140px;
   height: 140px;

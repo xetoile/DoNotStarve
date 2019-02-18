@@ -158,7 +158,7 @@ class DoNotStarveCalendar {
     }
     // new or full moon
     if (moonReduced % 10 === 1) { // 1 or 11
-      this.phase.name = this._phases[(moonReduced - 1) % 6]; // 0 (new) or 4 (full)
+      this.phase.label = this._phases[(moonReduced - 1) % 6]; // 0 (new) or 4 (full)
       this.phase.day = 1;
       this.phase.duration = 1;
       return;
